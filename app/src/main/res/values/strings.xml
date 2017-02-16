@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name">Anbada</string>
+    <string name="titleA">지역번호</string>
+    <string name="titleB">허용리스트</string>
+    <string name="titleC">차단리스트</string>
+
+    <string name="cancel">취소</string>
+    <string name="del">삭제</string>
+    <string name="ok">확인</string>
+    <string name="edit">수정</string>]
+    <string name="add">추가</string>]
+    <string name="finish">종료</string>
+    <string name="select_all">전체 차단</string>
+    <string name="finish_str">종료 하시겠습니까?</string>
+
+    <string name="hint_phone">전화번호 입력</string>
+    <string name="hint_content">내용 입력</string>
+
+    <string name="menu_service">차단</string>
+    <string name="menu_notification">차단 알림</string>
+    <string name="menu_password">비밀번호 사용</string>
+    <string name="menu_password_set">비밀번호 설정</string>
+    <string name="menu_version_info">버전정보</string>
+
+    <string name="service_block">차단됨</string>
+
+    <string name="pw_view_num">번호보기</string>
+    <string name="pw_old">기존 비밀번호 입력</string>
+    <string name="pw_new">새로운 비밀번호 입력</string>
+
+    <string name="click_to_show">비밀번호 입력</string>
+    <string name="backspace">Backspace</string>
+
+
+    <string name="block_area">차단할 지역번호 선택</string>
+    <string name="block_area_etc">기타</string>
+    <string name="area_str_01">서울</string>
+    <string name="area_str_02">부산</string>
+    <string name="area_str_03">대구</string>
+    <string name="area_str_04">인천</string>
+    <string name="area_str_05">광주</string>
+    <string name="area_str_06">대전</string>
+    <string name="area_str_07">울산</string>
+    <string name="area_str_08">세종</string>
+    <string name="area_str_09">경기</string>
+    <string name="area_str_10">강원</string>
+    <string name="area_str_11">충북</string>
+    <string name="area_str_12">충남</string>
+    <string name="area_str_13">전북</string>
+    <string name="area_str_14">전남</string>
+    <string name="area_str_15">경북</string>
+    <string name="area_str_16">경남</string>
+    <string name="area_str_17">제주</string>
+
+    <string name="area_01">02</string>
+    <string name="area_02">051</string>
+    <string name="area_03">053</string>
+    <string name="area_04">032</string>
+    <string name="area_05">062</string>
+    <string name="area_06">042</string>
+    <string name="area_07">052</string>
+    <string name="area_08">044</string>
+    <string name="area_09">031</string>
+    <string name="area_10">033</string>
+    <string name="area_11">043</string>
+    <string name="area_12">041</string>
+    <string name="area_13">063</string>
+    <string name="area_14">061</string>
+    <string name="area_15">054</string>
+    <string name="area_16">055</string>
+    <string name="area_17">064</string>
+    <string name="area_etc">070</string>
+
+    <!--ToastMassege-->
+    <string name="toast_pw_no">비밀번호 4자리를 입력해주세요.</string>
+    <string name="toast_pw_no2">비밀번호가 일치하지 않습니다.</string>
+    <string name="password_incorrect">비밀번호가 일치하지 않습니다.</string>
+
+    <!--설명-->
+    <string name="str_area">전화번호부에 등록되어 있는 번호는 차단하지 않습니다. \n차단을 원하실 경우 차단리스트에 등록해주세요.</string>
+    <string name="str_ok">전화번호부에 등록되어 있지 않은 번호허용. \n차단리스트에 등록 되어있을 경우 차단 우선.</string>
+    <string name="str_block">전화번호부에 등록되어 있는 번호도 차단.</string>
+</resources>
