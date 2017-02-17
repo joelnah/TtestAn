@@ -33,8 +33,8 @@ public class IncomingCallBroadcastReceiver extends BroadcastReceiver {
     private String area_num;
     private Context con;
     private AllData allData;
-   // private AudioManager    audioManager;
-  // private Context con;
+/*    private AudioManager audioManager;
+    private int ringMode;*/
 
   //  private final Handler mHandler = new Handler(Looper.getMainLooper());
   private SharedPreferences pref;
@@ -45,34 +45,35 @@ public class IncomingCallBroadcastReceiver extends BroadcastReceiver {
     public void onReceive(final Context context, Intent intent) {
         Log.d(TAG,"onReceive()");
 
-
-     //   this.con = context;
-   //     audioManager = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
-
         /**
          * http://mmarvick.github.io/blog/blog/lollipop-multiple-broadcastreceiver-call-state/
          * 2번 호출되는 문제 해결
          */
+
         String state = intent.getStringExtra(TelephonyManager.EXTRA_STATE);
+
         if (state.equals(mLastState)) {
             return;
-
         } else {
             mLastState = state;
-
         }
-        con = context;
-        allData = AllData.getInnstance();
-        pref = con.getSharedPreferences(con.getString(R.string.app_name), con.MODE_PRIVATE);
 
-        if (!pref.getBoolean(allData.SET_SERVICE,true))
-            return;
-
+        Log.d("nah","get state : "+state);
 
         if (TelephonyManager.EXTRA_STATE_RINGING.equals(state)) {
-      //      int ringMode = audioManager.getRingerMode();
 
-        //    audioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+            allData = AllData.getInnstance();
+            pref = context.getSharedPreferences(context.getString(R.string.app_name), context.MODE_PRIVATE);
+
+            if (!pref.getBoolean(allData.SET_SERVICE,true))
+                return;
+
+            con = context;
+/*            audioManager = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
+            ringMode = audioManager.getRingerMode();
+
+            audioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);*/
+
             String incomingNumber = intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER);
 
           //  final String phone_num = PhoneNumberUtils.formatNumber(incomingNumber);
@@ -86,7 +87,7 @@ public class IncomingCallBroadcastReceiver extends BroadcastReceiver {
             String area_is[] = phone_num.split("-");
             area_num = area_is[0];
             LogUtil.writeLog("\n---///////////////////////////////////////////-\nCall AreaNumber : "+ area_num);
-/*            if(area_num.equals("010")){
+            if(area_num.equals("010")){
                 for (int i = 0 ; i < allData.b.size() ; i++) {
                     if(phone_num.replace("-","").equals(allData.b.get(i).get("num"))){
                         StartService();
@@ -95,8 +96,9 @@ public class IncomingCallBroadcastReceiver extends BroadcastReceiver {
                 }
             }else{
                 PremitCheck();
-            }*/
-            PremitCheck();
+            }
+        //    PremitCheck();
+
         }
 
 
@@ -115,6 +117,9 @@ public class IncomingCallBroadcastReceiver extends BroadcastReceiver {
         app.Logs("Checking OK List : "+check);
         if(!check)
             AllBlockCheck();
+/*        else {
+            audioManager.setRingerMode(ringMode);
+        }*/
     }
 
 
@@ -179,6 +184,9 @@ public class IncomingCallBroadcastReceiver extends BroadcastReceiver {
         if(check){
             StartService();
         }
+        /*else{
+            audioManager.setRingerMode(ringMode);
+        }*/
     }
 
     private void StartService(){
@@ -187,6 +195,7 @@ public class IncomingCallBroadcastReceiver extends BroadcastReceiver {
         Intent serviceIntent = new Intent(con, CallingService.class);
         serviceIntent.putExtra(CallingService.EXTRA_CALL_NUMBER, phone_num);
         con.startService(serviceIntent);
+     //   audioManager.setRingerMode(ringMode);
     }
 
 }
